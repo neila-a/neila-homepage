@@ -10,8 +10,14 @@ import {
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Typography from "@mui/material/Typography";
+import Link from "./Link";
+import Code from "@mui/icons-material/Code";
+import Contacts from "@mui/icons-material/Contacts";
 const
     avatarSize = "max(33vw, 33vh)",
+    /**
+     * 居中了的`<Grid />`。
+     */
     CenterGrid = (props: {
         children: ReactNode;
     }) => <Grid size={{
@@ -41,7 +47,7 @@ export default function Home() {
                 width: "100%",
                 height: avatarSize,
                 flexDirection: "column",
-                justifyContent: "space-around",
+                justifyContent: "space-evenly",
                 alignItems: "center"
             }}>
                 <Box sx={{
@@ -68,11 +74,17 @@ export default function Home() {
                         有时是 {author.alias}
                     </Typography>
                 </Box>
+                <Typography variant="subtitle1">
+                    “{
+                        /* 从 QQ 获取会更好，但做不到 */
+                        author.signature
+                    }”
+                </Typography>
                 <ButtonGroup variant="text" size="large">
-                    <Button>
+                    <Button component={Link} href="/projects" startIcon={<Code />}>
                         项目
                     </Button>
-                    <Button>
+                    <Button component={Link} href="/contacts" startIcon={<Contacts />}>
                         联系
                     </Button>
                 </ButtonGroup>

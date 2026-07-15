@@ -13,7 +13,8 @@
       "name": "NeilaRuan",
       "id": 1681275653403074600
     },
-    "email": "neilaspace@outlook.com"
+    "email": "neilaspace@outlook.com",
+    "signature": "越了解越拥护，越了解越践行，越践行越坚信"
   },
   "keywords": [
     "homepage"
@@ -30,6 +31,7 @@
     "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^9.2.0",
     "@mui/material": "^9.2.0",
     "@mui/material-nextjs": "^9.1.1",
     "next": "16.2.10",
