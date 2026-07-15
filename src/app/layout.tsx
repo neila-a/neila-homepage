@@ -32,6 +32,7 @@ export const metadata: Metadata = {
         template: `%s | ${author.name}`,
         default: author.name
     },
+    icons: "/icon.jpg",
     description,
     applicationName: description,
     authors: author,
@@ -58,7 +59,10 @@ export const metadata: Metadata = {
 export default function RootLayout(props: Readonly<{
     children: ReactNode;
 }>) {
-    return <html lang={locale} suppressHydrationWarning>
+    return <Box component="html" lang={locale} sx={{
+        // 必须写这里
+        scrollbarWidth: "none"
+    }} suppressHydrationWarning>
         <Box component="body" sx={{
             margin: 0
         }}>
@@ -69,5 +73,5 @@ export default function RootLayout(props: Readonly<{
                 </ThemeProvider>
             </AppRouterCacheProvider>
         </Box>
-    </html>;
+    </Box>;
 }
