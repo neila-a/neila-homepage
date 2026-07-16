@@ -48,7 +48,7 @@ export default async function Page(props: Props) {
                         }
                     },
                 }} placeholder='搜索' variant="outlined" fullWidth />
-                <Button variant='text' component={Link} href="/" sx={{
+                <Button size='large' variant='text' component={Link} href="/" color='warning' sx={{
                     ml: 3
                 }} startIcon={<Image src="/icon.jpg" width={24} height={24} alt="头像" />}>
                     {author.name}

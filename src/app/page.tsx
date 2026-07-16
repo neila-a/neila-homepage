@@ -17,18 +17,23 @@ const
     /**
      * 居中了的`<Grid />`。
      */
-    CenterGrid = (props: {
-        children: ReactNode;
-    }) => <Grid size={{
+    CenterGrid = (props: object) => <Grid size={{
         md: 6,
         xs: 12
     }} sx={{
         display: "flex",
         alignItems: "center",
         justifyContent: "center"
-    }}>
-            {props.children}
-        </Grid>;
+    }} {...props} />,
+    /**
+     * 不能使用 styled，否则会出现水合错误
+     */
+    TextsBox = (props: object) => <Box sx={{
+        display: "flex",
+        alignItems: "baseline",
+        justifyContent: "center",
+        flexDirection: "row"
+    }} {...props} />;
 export default async function Home() {
     return <Grid container sx={{
         height: "100vh",
@@ -54,12 +59,7 @@ export default async function Home() {
                     flexDirection: "column",
                     alignItems: "center"
                 }}>
-                    <Box sx={{
-                        display: "flex",
-                        alignItems: "baseline",
-                        justifyContent: "center",
-                        flexDirection: "row"
-                    }}>
+                    <TextsBox>
                         <Typography variant="h2" sx={{
                             pr: 3
                         }}>
@@ -68,10 +68,17 @@ export default async function Home() {
                         <Typography variant="h1">
                             {author.name}
                         </Typography>
-                    </Box>
-                    <Typography variant="h5">
-                        有时是 {author.alias}
-                    </Typography>
+                    </TextsBox>
+                    <TextsBox>
+                        {[
+                            "有时是",
+                            ...author.alias.split(" ")
+                        ].map((text, index) => <Typography key={text} sx={{
+                            pr: "0.25rem"
+                        }} variant={index === 2 ? "h6" : "h5"}>
+                            {text}
+                        </Typography>)}
+                    </TextsBox>
                 </Box>
                 <Typography variant="subtitle1">
                     “{
