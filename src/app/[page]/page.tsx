@@ -48,13 +48,18 @@ export default async function Page(props: Props) {
                         }
                     },
                 }} placeholder='搜索' variant="outlined" fullWidth />
-                <Button size='large' variant='text' component={Link} href="/" color='warning' sx={{
+                <Button size='large' variant='text' component={
+                    /* 不需要使用`<nav />`。 */
+                    Link
+                } href="/" color='warning' sx={{
                     ml: 3
                 }} startIcon={<Image src="/icon.jpg" width={24} height={24} alt="头像" />}>
                     {author.name}
                 </Button>
             </Toolbar>
         </AppBar>
-        <Page />
+        <main>
+            <Page />
+        </main>
     </>
 }

@@ -38,7 +38,7 @@ export default async function Home() {
     return <Grid container sx={{
         height: "100vh",
         width: "100%"
-    }}>
+    }} component="main">
         <CenterGrid>
             <Avatar alt="头像" src="/icon.jpg" sx={{
                 height: avatarSize,
@@ -62,10 +62,10 @@ export default async function Home() {
                     <TextsBox>
                         <Typography variant="h2" sx={{
                             pr: 3
-                        }}>
+                        }} component="span">
                             {author.name_zh_CN}
                         </Typography>
-                        <Typography variant="h1">
+                        <Typography variant="h1" component="span">
                             {author.name}
                         </Typography>
                     </TextsBox>
@@ -75,12 +75,12 @@ export default async function Home() {
                             ...author.alias.split(" ")
                         ].map((text, index) => <Typography key={text} sx={{
                             pr: "0.25rem"
-                        }} variant={index === 2 ? "h6" : "h5"}>
+                        }} variant={index === 2 ? "h6" : "h5"} component="span">
                             {text}
                         </Typography>)}
                     </TextsBox>
                 </Box>
-                <Typography variant="subtitle1">
+                <Typography variant="subtitle1" component="span">
                     “{
                         /* 从 QQ 获取会更好，但做不到 */
                         author.signature
