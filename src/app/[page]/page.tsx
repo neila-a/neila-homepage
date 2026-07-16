@@ -11,6 +11,7 @@ import Link from "../Link";
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
+import Tooltip from '@mui/material/Tooltip';
 interface Props {
     params: Promise<{
         page: string;
@@ -43,19 +44,22 @@ export default async function Page(props: Props) {
                                 <SearchIcon />
                             </InputAdornment>
                         ),
+                        component: "search",
                         sx: {
                             height: 48
                         }
                     },
                 }} placeholder='搜索' variant="outlined" fullWidth />
-                <Button size='large' variant='text' component={
-                    /* 不需要使用`<nav />`。 */
-                    Link
-                } href="/" color='warning' sx={{
-                    ml: 3
-                }} startIcon={<Image src="/icon.jpg" width={24} height={24} alt="头像" />}>
-                    {author.name}
-                </Button>
+                <Tooltip title="返回主页">
+                    <Button size='large' variant='text' component={
+                        /* 不需要使用`<nav />`。 */
+                        Link
+                    } href="/" color='warning' sx={{
+                        ml: 3
+                    }} startIcon={<Image src="/icon.jpg" width={24} height={24} alt="头像" />}>
+                        {author.name}
+                    </Button>
+                </Tooltip>
             </Toolbar>
         </AppBar>
         <main>
