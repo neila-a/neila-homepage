@@ -11,8 +11,7 @@ import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Typography from "@mui/material/Typography";
 import Link from "./Link";
-import Code from "@mui/icons-material/Code";
-import Contacts from "@mui/icons-material/Contacts";
+import getPageMetadata from "./[page]/getPage";
 const
     avatarSize = "max(33vw, 33vh)",
     /**
@@ -30,7 +29,7 @@ const
     }}>
             {props.children}
         </Grid>;
-export default function Home() {
+export default async function Home() {
     return <Grid container sx={{
         height: "100vh",
         width: "100%"
@@ -81,12 +80,15 @@ export default function Home() {
                     }”
                 </Typography>
                 <ButtonGroup variant="text" size="large">
-                    <Button component={Link} href="/projects" startIcon={<Code />}>
-                        项目
-                    </Button>
-                    <Button component={Link} href="/contacts" startIcon={<Contacts />}>
-                        联系
-                    </Button>
+                    {["projects", "contacts"].map(async page => {
+                        const {
+                            title,
+                            PageIcon
+                        } = (await getPageMetadata(page)).metadata;
+                        return <Button component={Link} href={`/${page}`} startIcon={<PageIcon />}>
+                            {title}
+                        </Button>;
+                    })}
                 </ButtonGroup>
             </Box>
         </CenterGrid>

@@ -6,12 +6,9 @@ import CssBaseline from "@mui/material/CssBaseline";
 import {
     ThemeProvider
 } from "@mui/material/styles";
-import type {
+import {
     Metadata
 } from "next";
-import {
-    ReactNode
-} from "react";
 import {
     author,
     description,
@@ -27,7 +24,7 @@ const
      * 不能使用 `cmn`
      */
     locale = "zh_CN";
-export const metadata: Metadata = {
+export const metadata = {
     title: {
         template: `%s | ${author.name}`,
         default: author.name
@@ -55,10 +52,8 @@ export const metadata: Metadata = {
         title
     }
     // facebook、pinterest 属性并不是社交方面的内容
-};
-export default function RootLayout(props: Readonly<{
-    children: ReactNode;
-}>) {
+} satisfies Metadata;
+export default function RootLayout(props: LayoutProps<"/">) {
     return <Box component="html" lang={locale} sx={{
         // 必须写这里
         scrollbarWidth: "none"
