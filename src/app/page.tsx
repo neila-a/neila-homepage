@@ -4,14 +4,12 @@ import {
     author
 } from "../../package.json";
 import Avatar from "@mui/material/Avatar";
-import {
-    ReactNode
-} from "react";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Typography from "@mui/material/Typography";
-import Link from "./Link";
-import getPageMetadata from "./[page]/getPage";
+import Link from "./components/Link";
+import getPageMetadata from "./[page]/getters/getPageMetadata";
+import avatar from "./icon.jpg";
 const
     avatarSize = "max(33vw, 33vh)",
     /**
@@ -40,7 +38,10 @@ export default async function Home() {
         width: "100%"
     }} component="main">
         <CenterGrid>
-            <Avatar alt="头像" src="/icon.jpg" sx={{
+            <Avatar alt="头像" src={
+                // 不要使用展开语法 {...avatar}
+                avatar.src
+            } sx={{
                 height: avatarSize,
                 width: avatarSize
             }} />
@@ -61,7 +62,8 @@ export default async function Home() {
                 }}>
                     <TextsBox>
                         <Typography variant="h2" sx={{
-                            pr: 3
+                            pr: 3,
+                            color: "text.secondary"
                         }} component="span">
                             {author.name_zh_CN}
                         </Typography>
@@ -74,7 +76,8 @@ export default async function Home() {
                             "有时是",
                             ...author.alias.split(" ")
                         ].map((text, index) => <Typography key={text} sx={{
-                            pr: "0.25rem"
+                            pr: "0.25rem",
+                            color: "text.secondary"
                         }} variant={index === 2 ? "h6" : "h5"} component="span">
                             {text}
                         </Typography>)}
@@ -91,7 +94,8 @@ export default async function Home() {
                         const {
                             title,
                             PageIcon
-                        } = (await getPageMetadata(page)).metadata;
+                        } = await getPageMetadata(page);
+                        debugger;
                         return <Button component={Link} href={`/${page}`} startIcon={<PageIcon />}>
                             {title}
                         </Button>;

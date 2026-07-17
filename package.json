@@ -9,6 +9,10 @@
     "alias": "Neil Andrew Alen",
     "url": "https://neila.top",
     "phone": "我不想透露",
+    "github": {
+      "name": "neila-a",
+      "id": 78797625
+    },
     "twitter": {
       "name": "NeilaRuan",
       "id": 1681275653403074600
@@ -31,12 +35,15 @@
     "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@iconify/react": "^6.0.2",
     "@mui/icons-material": "^9.2.0",
     "@mui/material": "^9.2.0",
     "@mui/material-nextjs": "^9.1.1",
+    "jotai": "^2.20.2",
     "next": "16.2.10",
     "react": "19.2.7",
-    "react-dom": "19.2.7"
+    "react-dom": "19.2.7",
+    "react-innertext": "^1.1.5"
   },
   "devDependencies": {
     "@types/node": "^26.1.1",

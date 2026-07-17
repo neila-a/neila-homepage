@@ -1,11 +1,9 @@
 import {
     PageMetadata
-} from "../getPage";
+} from "../../getters/getPageMetadata";
 import CodeIcon from "@mui/icons-material/Code";
-export const metadata = {
+const metadata = {
     title: "项目",
     PageIcon: CodeIcon
 } satisfies PageMetadata;
-export default function Projects() {
-    return 1;
-}
+export default metadata;

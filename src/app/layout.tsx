@@ -15,6 +15,7 @@ import {
     keywords
 } from "../../package.json";
 import theme from "./theme";
+import Provider from "./components/Providers";
 const
     title = {
         template: `%s | ${author.name}`,
@@ -29,7 +30,6 @@ export const metadata = {
         template: `%s | ${author.name}`,
         default: author.name
     },
-    icons: "/icon.jpg",
     description,
     applicationName: description,
     authors: author,
@@ -64,7 +64,9 @@ export default function RootLayout(props: LayoutProps<"/">) {
             <AppRouterCacheProvider>
                 <ThemeProvider theme={theme}>
                     <CssBaseline enableColorScheme />
-                    {props.children}
+                    <Provider>
+                        {props.children}
+                    </Provider>
                 </ThemeProvider>
             </AppRouterCacheProvider>
         </Box>
