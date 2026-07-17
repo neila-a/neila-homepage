@@ -14,8 +14,8 @@ import {
     description,
     keywords
 } from "../../package.json";
-import theme from "./theme";
 import Provider from "./components/Providers";
+import theme from "./theme";
 const
     title = {
         template: `%s | ${author.name}`,
@@ -45,9 +45,9 @@ export const metadata = {
     },
     twitter: {
         site: author.name,
-        siteId: author.twitter.id.toString(),
+        siteId: author.x.id.toString(),
         creator: author.name,
-        creatorId: author.twitter.id.toString(),
+        creatorId: author.x.id.toString(),
         description,
         title
     }

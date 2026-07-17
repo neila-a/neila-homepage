@@ -1,18 +1,18 @@
 import AppBar from '@mui/material/AppBar';
+import Box from "@mui/material/Box";
+import Button from '@mui/material/Button';
 import Toolbar from '@mui/material/Toolbar';
+import Tooltip from '@mui/material/Tooltip';
 import Typography from "@mui/material/Typography";
+import Image from 'next/image';
 import {
     author
 } from "../../../package.json";
-import Box from "@mui/material/Box";
-import getPageMetadata from "./getters/getPageMetadata";
-import getPage from './getters/getPage';
-import Image from 'next/image';
-import Button from '@mui/material/Button';
 import Link from "../components/Link";
-import Tooltip from '@mui/material/Tooltip';
-import Search from './Search';
 import avatar from "../icon.jpg";
+import getPage from './getters/getPage';
+import getPageMetadata from "./getters/getPageMetadata";
+import Search from './Search';
 interface Props {
     params: Promise<{
         page: string;

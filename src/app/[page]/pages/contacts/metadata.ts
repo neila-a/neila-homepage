@@ -1,7 +1,7 @@
+import ContactsIcon from "@mui/icons-material/Contacts";
 import {
     PageMetadata
 } from "../../getters/getPageMetadata";
-import ContactsIcon from "@mui/icons-material/Contacts";
 const metadata = {
     title: "联系",
     PageIcon: ContactsIcon

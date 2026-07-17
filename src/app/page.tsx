@@ -1,14 +1,15 @@
-import Grid from "@mui/material/Grid";
+import BookIcon from "@mui/icons-material/Book";
+import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 import {
     author
 } from "../../package.json";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
-import Typography from "@mui/material/Typography";
-import Link from "./components/Link";
 import getPageMetadata from "./[page]/getters/getPageMetadata";
+import Link from "./components/Link";
 import avatar from "./icon.jpg";
 const
     avatarSize = "max(33vw, 33vh)",
@@ -95,11 +96,13 @@ export default async function Home() {
                             title,
                             PageIcon
                         } = await getPageMetadata(page);
-                        debugger;
                         return <Button component={Link} href={`/${page}`} startIcon={<PageIcon />}>
                             {title}
                         </Button>;
                     })}
+                    <Button href="https://blog.neila.top" startIcon={<BookIcon />} target="_blank">
+                        博客
+                    </Button>
                 </ButtonGroup>
             </Box>
         </CenterGrid>

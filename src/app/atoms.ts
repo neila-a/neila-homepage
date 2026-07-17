@@ -1,24 +1,30 @@
 import {
     atom
 } from "jotai";
-import projects from "../../data/projects/index";
 import innerText from "react-innertext";
-import projectCategories from "../../data/projects/categories.json"
+import projectCategories from "../../data/projects/categories.json";
+import projects from "../../data/projects";
+import contacts from "../../data/contacts";
 export const
-    searchTextAtom = atom(""),
+    searchTextAtom = atom("");
+const searchFilteAtom = atom(get => <T>(
+    origins: T[],
+    processor: (toProcess: T) => string[]
+) => origins.filter(origin => processor(origin).some(
+    text => text.toLowerCase().includes(get(searchTextAtom).toLowerCase()))
+));
+export const
     categorizedProjectsAtom = atom(get => {
-        const searched = projects.filter(project => [
+        const searched = get(searchFilteAtom)(projects, project => [
             project.name,
             innerText(project.description),
-            // @ts-expect-error 
-            project?.translatedName
+            "translatedName" in project && project.translatedName
         ].filter(
             text => typeof text === "string"
-        ).some(
-            text => text.toLowerCase().includes(get(searchTextAtom).toLowerCase())
         ));
         return Object.fromEntries(projectCategories.map(([category]) => [
             category,
             searched.filter(project => project.category === category)
         ]));
-    });
+    }),
+    searchedContactsAtom = atom(get => get(searchFilteAtom)(contacts, Object.values));

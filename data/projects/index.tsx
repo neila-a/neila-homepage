@@ -1,16 +1,16 @@
-import {
-    author
-} from "../../package.json";
 import Link from "@mui/material/Link";
-import AllernacimCover from "./covers/Allernacim.png";
-import RudolphCover from "./covers/Rudolph.png";
-import SecrentatumCover from "./covers/Secrentatum.png";
+import {
+    StaticImageData
+} from "next/image";
 import {
     ReactNode
 } from "react";
 import {
-    StaticImageData
-} from "next/image";
+    author
+} from "../../package.json";
+import AllernacimCover from "./covers/Allernacim.png";
+import RudolphCover from "./covers/Rudolph.png";
+import SecrentatumCover from "./covers/Secrentatum.png";
 interface BaseProject {
     name: ReactNode;
     description: ReactNode;
@@ -27,7 +27,7 @@ interface CodeProject extends BaseProject {
      * 为空即为假
      */
     github?: boolean;
-    url?: URL;
+    url?: string;
 }
 interface VideoProject extends BaseProject {
     /**
@@ -54,6 +54,8 @@ interface githubRepoResponse {
     fork: boolean;
     created_at: string;
     size?: number;
+    url?: string;
+    homepage: string | null;
 }
 const
     githubAPI = `https://api.github.com/user/${author.github.id}/repos`,
@@ -64,7 +66,11 @@ const
     lazyDate = "有过记载，但我懒得去查了",
     projects = [
         ...repos.filter(repo => !repo.fork).map(repo => {
+            delete repo.url;
             delete repo.size;
+            if (repo.homepage) {
+                repo.url = repo.homepage;
+            }
             return {
                 ...repo,
                 category: "code",
