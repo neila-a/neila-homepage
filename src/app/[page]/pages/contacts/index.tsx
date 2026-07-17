@@ -1,12 +1,12 @@
 "use client";
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import Alert from '@mui/material/Alert';
-import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import Alert from "@mui/material/Alert";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
 import Slide, {
     SlideProps
 } from "@mui/material/Slide";
@@ -14,14 +14,14 @@ import Snackbar from "@mui/material/Snackbar";
 import Tooltip from "@mui/material/Tooltip";
 import {
     useAtomValue
-} from 'jotai';
+} from "jotai";
 import {
     useState
-} from 'react';
-import platforms from '../../../../../data/contacts/platforms';
+} from "react";
+import platforms from "../../../../../data/contacts/platforms";
 import {
     searchedContactsAtom
-} from '../../../atoms';
+} from "../../../atoms";
 export default function Contacts() {
     const
         searchedContacts = useAtomValue(searchedContactsAtom),
@@ -55,14 +55,18 @@ export default function Contacts() {
                             <ContentCopyIcon />
                         </IconButton>
                     </Tooltip>
-                } : {}} disablePadding>
+                } : {
+                }} disablePadding>
                     <Tooltip title="点击打开">
                         <ListItemButton {...haveURL ? {
                             href: platform.url(account),
                             target: "_blank"
-                        } : {}}>
+                        } : {
+                        }}>
                             <ListItemIcon>
-                                <platform.icon />
+                                <platform.icon sx={{
+                                    color: "text.primary"
+                                }} />
                             </ListItemIcon>
                             <ListItemText
                                 primary={platform.name}
@@ -82,14 +86,14 @@ export default function Contacts() {
              */
             1200
         } slots={{
-            transition: (props: SlideProps) => <Slide direction='up' {...props} />
+            transition: (props: SlideProps) => <Slide direction="up" {...props} />
         }}>
             <Alert
                 onClose={handleCloseSnackbar}
                 severity="success"
                 variant="filled"
                 sx={{
-                    width: '100%'
+                    width: "100%"
                 }}
             >
                 已复制 {copiedText} 到剪贴板。

@@ -6,7 +6,11 @@
   "author": {
     "name": "Neila",
     "name_zh_CN": "尼尔",
-    "alias": "Neil Andrew Alen",
+    "alias": {
+      "first": "Neil",
+      "middle": "Andrew",
+      "last": "Alen"
+    },
     "url": "https://neila.top",
     "phone": "我不想透露",
     "blog": "https://blog.neila.top",
@@ -51,7 +55,7 @@
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "babel-plugin-react-compiler": "1.0.0",
-    "eslint": "^10.7.0",
+    "eslint": "^9.39.5",
     "eslint-config-next": "16.2.10",
     "typescript": "^6.0.3"
   },

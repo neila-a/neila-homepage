@@ -73,13 +73,13 @@ export default async function Home() {
                         </Typography>
                     </TextsBox>
                     <TextsBox>
-                        {[
-                            "有时是",
-                            ...author.alias.split(" ")
-                        ].map((text, index) => <Typography key={text} sx={{
+                        {Object.entries({
+                            start: "有时是",
+                            ...author.alias
+                        }).map(([position, text]) => <Typography key={text} sx={{
                             pr: "0.25rem",
                             color: "text.secondary"
-                        }} variant={index === 2 ? "h6" : "h5"} component="span">
+                        }} variant={position === "middle" ? "h6" : "h5"} component="span">
                             {text}
                         </Typography>)}
                     </TextsBox>
@@ -96,7 +96,7 @@ export default async function Home() {
                             title,
                             PageIcon
                         } = await getPageMetadata(page);
-                        return <Button component={Link} href={`/${page}`} startIcon={<PageIcon />}>
+                        return <Button component={Link} href={`/${page}`} startIcon={<PageIcon />} key={page}>
                             {title}
                         </Button>;
                     })}

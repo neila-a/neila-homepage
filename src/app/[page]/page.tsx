@@ -1,18 +1,18 @@
-import AppBar from '@mui/material/AppBar';
+import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Button from '@mui/material/Button';
-import Toolbar from '@mui/material/Toolbar';
-import Tooltip from '@mui/material/Tooltip';
+import Button from "@mui/material/Button";
+import Toolbar from "@mui/material/Toolbar";
+import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
-import Image from 'next/image';
+import Image from "next/image";
 import {
     author
 } from "../../../package.json";
 import Link from "../components/Link";
 import avatar from "../icon.jpg";
-import getPage from './getters/getPage';
+import getPage from "./getters/getPage";
 import getPageMetadata from "./getters/getPageMetadata";
-import Search from './Search';
+import Search from "./Search";
 interface Props {
     params: Promise<{
         page: string;
@@ -42,7 +42,7 @@ export default async function Page(props: Props) {
                 </Typography>
                 <Search />
                 <Tooltip title="返回主页">
-                    <Button size='large' variant='text' component={
+                    <Button size="large" variant="text" component={
                         /* 不需要使用`<nav />`。 */
                         Link
                     } href="/" sx={{
@@ -59,5 +59,5 @@ export default async function Page(props: Props) {
         }}>
             <Page />
         </Box>
-    </>
+    </>;
 }

@@ -36,7 +36,7 @@ interface VideoProject extends BaseProject {
      */
     size: number;
     /**
-     * 视频的 ID  
+     * 视频的 ID
      * 包含BV
      */
     videoID?: string;

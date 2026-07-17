@@ -7,15 +7,13 @@ import projects from "../../data/projects";
 import contacts from "../../data/contacts";
 export const
     searchTextAtom = atom("");
-const searchFilteAtom = atom(get => <T>(
+const searchFilterAtom = atom(get => <T>(
     origins: T[],
     processor: (toProcess: T) => string[]
-) => origins.filter(origin => processor(origin).some(
-    text => text.toLowerCase().includes(get(searchTextAtom).toLowerCase()))
-));
+) => origins.filter(origin => processor(origin).some(text => text.toLowerCase().includes(get(searchTextAtom).toLowerCase()))));
 export const
     categorizedProjectsAtom = atom(get => {
-        const searched = get(searchFilteAtom)(projects, project => [
+        const searched = get(searchFilterAtom)(projects, project => [
             project.name,
             innerText(project.description),
             "translatedName" in project && project.translatedName
@@ -27,4 +25,4 @@ export const
             searched.filter(project => project.category === category)
         ]));
     }),
-    searchedContactsAtom = atom(get => get(searchFilteAtom)(contacts, Object.values));
+    searchedContactsAtom = atom(get => get(searchFilterAtom)(contacts, Object.values));

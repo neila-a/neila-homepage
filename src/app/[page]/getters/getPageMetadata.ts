@@ -1,7 +1,7 @@
 import {
     Metadata
 } from "next";
-import type SvgIcon from "@mui/material/SvgIcon"
+import type SvgIcon from "@mui/material/SvgIcon";
 export interface PageMetadata extends Metadata {
     title: string;
     PageIcon: typeof SvgIcon
